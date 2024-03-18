@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: domain-manager-query
+  namespace: defaul
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: domain-manager-query
+  template:
+    metadata:
+      labels:
+        app: domain-manager-query
+    spec:
+      containers:
+      - name: docker
+        image: rranjos/domain-manager-query:1.0
+        ports:
+        - containerPort: 8082
+        imagePullPolicy: Always
